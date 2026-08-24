@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "donut1",
+  "position": {
+    "x": 770,
+    "y": 196,
+    "z": 1,
+    "height": 310,
+    "width": 486,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Players"
+                    }
+                  },
+                  "Property": "Team"
+                }
+              },
+              "queryRef": "Players.Team",
+              "nativeQueryRef": "Team"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Players"
+                    }
+                  },
+                  "Property": "Total Sixes"
+                }
+              },
+              "queryRef": "Players.Total Sixes",
+              "nativeQueryRef": "Total Sixes"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

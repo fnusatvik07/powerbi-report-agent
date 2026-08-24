@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSectionbb05b5e16a8b41a2e78800cd",
+  "displayName": "Sales Overview",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

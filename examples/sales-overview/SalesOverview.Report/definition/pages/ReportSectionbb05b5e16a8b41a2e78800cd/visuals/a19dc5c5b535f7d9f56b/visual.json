@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "a19dc5c5b535f7d9f56b",
+  "position": { "x": 40, "y": 40, "z": 0, "height": 120, "width": 600, "tabOrder": 0 },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        { "properties": { "paragraphs": [
+          { "textRuns": [ { "value": "Sales Overview - POC report authored by agent", "textStyle": { "fontSize": "20pt", "fontWeight": "bold" } } ] }
+        ] } }
+      ]
+    }
+  }
+}

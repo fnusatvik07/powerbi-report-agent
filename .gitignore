@@ -1,0 +1,26 @@
+# secrets / local config - never commit
+.env
+.env.*
+!.env.example
+
+# generated report output
+build/
+*.pbip.bak
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# node (the Microsoft authoring CLIs are installed globally, not vendored)
+node_modules/
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/

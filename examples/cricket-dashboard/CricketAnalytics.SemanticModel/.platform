@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CricketAnalytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fd803c25-afea-46d1-bdf7-382d7d1b628b"
+  }
+}

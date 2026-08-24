@@ -1,0 +1,80 @@
+table Players
+
+	measure 'Total Runs' = SUM(Players[Runs])
+		formatString: #,##0
+
+	measure 'Total Wickets' = SUM(Players[Wickets])
+		formatString: #,##0
+
+	measure 'Total Sixes' = SUM(Players[Sixes])
+		formatString: #,##0
+
+	measure 'Avg Strike Rate' = AVERAGE(Players[StrikeRate])
+		formatString: #,##0.0
+
+	measure 'Players' = DISTINCTCOUNT(Players[Player])
+		formatString: 0
+
+	column Player
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Player
+
+	column Team
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Team
+
+	column Role
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Role
+
+	column Matches
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Matches
+
+	column Runs
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Runs
+
+	column Wickets
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Wickets
+
+	column StrikeRate
+		dataType: double
+		summarizeBy: average
+		sourceColumn: StrikeRate
+
+	column Sixes
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Sixes
+
+	partition Players = m
+		mode: import
+		source =
+			let
+			    Source = #table(
+			        type table [Player = text, Team = text, Role = text, Matches = Int64.Type, Runs = Int64.Type, Wickets = Int64.Type, StrikeRate = number, Sixes = Int64.Type],
+			        {
+						{"Virat Sharma", "Bengaluru", "Batter", 14, 620, 2, 148.5, 28},
+						{"KL Reddy", "Bengaluru", "Batter", 14, 480, 0, 138.0, 19},
+						{"Yuzvendra Chahal", "Bengaluru", "Bowler", 14, 20, 21, 90.0, 1},
+						{"Rohit Menon", "Mumbai", "Batter", 14, 540, 0, 139.2, 24},
+						{"Jasprit Singh", "Mumbai", "Bowler", 14, 45, 24, 110.0, 2},
+						{"Hardik Desai", "Mumbai", "All-rounder", 13, 300, 12, 145.0, 16},
+						{"MS Rao", "Chennai", "Batter", 13, 410, 0, 135.6, 18},
+						{"Ravindra Patel", "Chennai", "All-rounder", 14, 380, 15, 142.1, 20},
+						{"Ruturaj G", "Chennai", "Batter", 14, 590, 0, 140.2, 22},
+						{"Shubman Gupta", "Gujarat", "Batter", 14, 700, 0, 151.3, 30},
+						{"Rashid Khan", "Gujarat", "Bowler", 14, 90, 27, 155.0, 6},
+						{"Mohammed Siraj", "Gujarat", "Bowler", 14, 15, 19, 85.0, 0}
+			        }
+			    )
+			in
+			    Source

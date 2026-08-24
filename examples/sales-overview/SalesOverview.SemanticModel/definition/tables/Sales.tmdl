@@ -1,0 +1,49 @@
+table Sales
+
+	/// Total sales revenue (Quantity * UnitPrice)
+	measure 'Total Sales' = SUMX(Sales, Sales[Quantity] * Sales[UnitPrice])
+		formatString: \$ #,##0
+
+	/// Total units sold
+	measure 'Total Quantity' = SUM(Sales[Quantity])
+		formatString: #,##0
+
+	/// Average unit price
+	measure 'Avg Unit Price' = AVERAGE(Sales[UnitPrice])
+		formatString: \$ #,##0.00
+
+	/// Number of regions
+	measure 'Region Count' = DISTINCTCOUNT(Sales[Region])
+		formatString: 0
+
+	column Region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Region
+
+	column Quantity
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+	column UnitPrice
+		dataType: double
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+	partition Sales = m
+		mode: import
+		source =
+			let
+			    Source = #table(
+			        type table [Region = text, Quantity = Int64.Type, UnitPrice = number],
+			        {
+			            {"East", 120, 9.50},
+			            {"West", 80, 12.00},
+			            {"North", 150, 7.25},
+			            {"South", 60, 15.00},
+			            {"Central", 100, 11.10}
+			        }
+			    )
+			in
+			    Source
